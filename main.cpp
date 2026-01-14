@@ -77,5 +77,17 @@ int main() {
         suma_globalna += suma_lokalna;
     };
 
+    // Uruchomienie watkow
+    for (int i = 0; i < liczba_watkow; ++i) {
+        wektor_watkow.emplace_back(zadanie_dla_watku, i);
+    }
+
+    // Oczekiwanie na zakonczenie pracy watkow
+    for (auto& watek : wektor_watkow) {
+        if (watek.joinable()) {
+            watek.join();
+        }
+    }
+
     return 0;
 }
