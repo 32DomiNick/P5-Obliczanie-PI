@@ -89,5 +89,17 @@ int main() {
         }
     }
 
+    // Koniec pomiaru czasu
+    auto koniec_czasu = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> czas_trwania = koniec_czasu - start_czasu;
+
+    // Finalne obliczenie calki (suma pol prostokatow)
+    double wynik_pi = suma_globalna * szerokosc_prostokata;
+
+    std::cout << std::fixed << std::setprecision(15);
+    std::cout << "Obliczone PI: " << wynik_pi << std::endl;
+    std::cout << "Czas obliczen: " << czas_trwania.count() << " s" << std::endl;
+
+
     return 0;
 }
