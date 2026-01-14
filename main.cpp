@@ -55,5 +55,27 @@ int main() {
     // Wyliczenie ile prostokatow przypada na jeden watek
     long long kroki_na_watek = liczba_podzialow / liczba_watkow;
 
+    /**
+     * @brief Wyrazenie lambda wykonujace czesc obliczen.
+     * * Zgodnie z wymaganiami projektu uzywamy lambdy do zrownoleglenia.
+     * @param id_watku Numer identyfikacyjny watku (0, 1, ...).
+     */
+    auto zadanie_dla_watku = [&](int id_watku) {
+        double suma_lokalna = 0.0;
+        
+        long long start = id_watku * kroki_na_watek;
+        // Ostatni watek bierze wszystko co zostalo do konca (zeby nie zgubic koncowki przy dzieleniu)
+        long long koniec = (id_watku == liczba_watkow - 1) ? liczba_podzialow : (start + kroki_na_watek);
+
+        for (long long i = start; i < koniec; ++i) {
+            double x = (i + 0.5) * szerokosc_prostokata;
+            suma_lokalna += funkcja_podcalkowa(x);
+        }
+
+        // Sekcja krytyczna: dodanie wyniku do sumy globalnej
+        std::lock_guard<std::mutex> blokada(mutex_sumy);
+        suma_globalna += suma_lokalna;
+    };
+
     return 0;
 }
