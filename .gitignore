@@ -1,11 +1,30 @@
-"# Skompilowane pliki" 
-"*.o" 
-"*.obj" 
-"*.exe" 
-"bin/" 
-"build/" 
-"" 
-"# Pliki edytora i IDE" 
-".vscode/" 
-".idea/" 
-"*.swp" 
+# Skompilowane pliki (C++)
+*.o
+*.obj
+*.exe
+*.dll
+*.lib
+*.a
+
+# Pliki debugowania (Windows generuje ich dużo)
+*.pdb
+*.ilk
+*.idb
+
+# Foldery wyjściowe
+bin/
+build/
+out/
+Debug/
+Release/
+x64/
+
+# Pliki edytora i IDE
+.vscode/
+.idea/
+*.swp
+*.user
+
+# Systemowe
+Thumbs.db
+.DS_Store
