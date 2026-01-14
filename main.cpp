@@ -1,7 +1,7 @@
 /**
  * @file main.cpp
  * @brief Glowny plik projektu obliczajacego PI metoda calkowania.
- * @author Twoje Imie
+ * @author Dominik Chrobak
  * @version 0.1 - Szkielet
  */
 
@@ -24,6 +24,22 @@ inline double funkcja_podcalkowa(double x) {
 }
 
 int main() {
-    // Tutaj bedzie glowna logika programu
+   long long liczba_podzialow;
+    int liczba_watkow;
+
+    // Pobranie konfiguracji od uzytkownika
+    std::cout << "Podaj liczbe podzialow (N): ";
+    std::cin >> liczba_podzialow;
+    std::cout << "Podaj liczbe watkow: ";
+    std::cin >> liczba_watkow;
+
+    // Prosta walidacja danych, aby uniknac bledow
+    if (liczba_watkow < 1) liczba_watkow = 1;
+    if (liczba_podzialow < 1) liczba_podzialow = 1000;
+
+    std::cout << "Konfiguracja: " << liczba_podzialow << " podzialow na " 
+              << liczba_watkow << " watkach." << std::endl;
+    
+
     return 0;
 }
