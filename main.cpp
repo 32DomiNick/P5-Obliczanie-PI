@@ -40,6 +40,20 @@ int main() {
     std::cout << "Konfiguracja: " << liczba_podzialow << " podzialow na " 
               << liczba_watkow << " watkach." << std::endl;
     
+    double szerokosc_prostokata = 1.0 / liczba_podzialow;
+    double suma_globalna = 0.0;
+    
+    // Mutex bedzie potrzebny do bezpiecznego sumowania wynikow z watkow
+    std::mutex mutex_sumy; 
+
+    // Rozpoczecie pomiaru czasu
+    auto start_czasu = std::chrono::high_resolution_clock::now();
+
+    // Wektor przechowujacy obiekty watkow
+    std::vector<std::thread> wektor_watkow;
+
+    // Wyliczenie ile prostokatow przypada na jeden watek
+    long long kroki_na_watek = liczba_podzialow / liczba_watkow;
 
     return 0;
 }
